@@ -157,7 +157,7 @@ const COLORS = [
   'yellowgreen'
 ]
 
-const { Triangle, Square, Circle } = require('./shapes')
+const { Triangle, Square, Circle } = require('./lib/shapes')
 
 // regex reference: https://www.geeksforgeeks.org/how-to-validate-hexadecimal-color-code-using-regular-expression/#
 const regHex = new RegExp('^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$') // use regex to determine if user input is a hex color
@@ -209,12 +209,17 @@ function writeToFile (answers) {
   let chosenShape = ''
   switch (answers.shape) {
     case 'Triangle':
-      chosenShape = new Triangle(answers.bgColor)
+      chosenShape = new Triangle()
+      chosenShape.setColor(answers.bgColor)
       break
     case 'Square':
-      chosenShape = new Square(answers.bgColor)
+      chosenShape = new Square()
+      chosenShape.setColor(answers.bgColor)
+      break
     case 'Circle':
-      chosenShape = new Circle(answers.bgColor)
+      chosenShape = new Circle()
+      chosenShape.setColor(answers.bgColor)
+      break
   }
 
   // the logo will be a 300x200 pixel image
@@ -222,7 +227,7 @@ function writeToFile (answers) {
   let svg = `
   <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><g>
   ${chosenShape.render()}
-  <text x="50%" y="45%" text-anchor="middle" font-size="2rem" font-family="arial" fill="${
+  <text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" font-size="40" font-family="arial" fill="${
     answers.textColor
   }"> ${answers.text}</text></g></svg>`
 

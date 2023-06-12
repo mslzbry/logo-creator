@@ -1,0 +1,4 @@
+
+  <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"><g>
+  <polygon points="150, 10 250, 170 50, 170" fill="navy" />
+  <text x="50%" y="50%" text-anchor="middle" alignment-baseline="central" font-size="40" font-family="arial" fill="mintcream"> cat</text></g></svg>
